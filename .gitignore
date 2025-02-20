@@ -1,1 +1,4 @@
 node_modlues
+dist
+config.js
+.env

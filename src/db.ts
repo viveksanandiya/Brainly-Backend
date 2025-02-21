@@ -1,12 +1,20 @@
-
 import mongoose, {model, Schema} from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 
-mongoose.connect("mongodb+srv://viveksanandiya787:mT6mqcz8pOZeGU5i@cluster0.7f2f6.mongodb.net/Second-Brain")
+const mongoUrl = process.env.MONGO_URL
+
+if(!mongoUrl){
+    throw new Error("Mongo url not defined");
+}
+
+mongoose.connect(mongoUrl)
+export default mongoose
 
 const UserSchema = new Schema({
     username: {type: String, unique: true},
     password: String
-})
+}) 
 
 export const UserModel = model("User", UserSchema);
 

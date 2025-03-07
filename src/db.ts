@@ -2,13 +2,18 @@ import mongoose, {model, Schema} from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
 
-const mongoUrl = process.env.MONGO_URL
+async function connectMongo(){
+    
+    const mongoUrl = process.env.MONGO_URL
 
-if(!mongoUrl){
-    throw new Error("Mongo url not defined");
+    if(!mongoUrl){
+        throw new Error("Mongo url not defined");
+    }
+    
+    await mongoose.connect(mongoUrl)
+    console.log("connected db")
 }
-
-mongoose.connect(mongoUrl)
+connectMongo();
 export default mongoose
 
 const UserSchema = new Schema({

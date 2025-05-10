@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(express.json());
 app.use(cors({
-  origin: ''
+  origin: 'https://brainly-frontend-u9oi.onrender.com'
 }));
 
 app.post("/api/v1/signup", async (req, res) => {

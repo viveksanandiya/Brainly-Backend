@@ -7,10 +7,13 @@ import { userMiddleware } from "./middleware";
 import { z } from "zod";
 import * as argon2 from "argon2";
 import cors from "cors";
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: ''
+}));
 
 app.post("/api/v1/signup", async (req, res) => {
     // TODO: zod validation , hash the password
@@ -284,4 +287,5 @@ app.get("/api/v1/brain/:shareLink", async (req, res) => {
 
 })
 
-app.listen(3000);
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

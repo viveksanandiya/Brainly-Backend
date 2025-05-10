@@ -10,8 +10,8 @@ async function connectMongo(){
         throw new Error("Mongo url not defined");
     }
     
-    await mongoose.connect(mongoUrl)
-    console.log("connected db")
+    const isConnectionActive = await mongoose.connect(mongoUrl)
+    if(isConnectionActive){console.log("connected db")}
 }
 connectMongo();
 export default mongoose
